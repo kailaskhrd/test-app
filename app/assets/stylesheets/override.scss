@@ -11,3 +11,27 @@
 #wrapper{
   padding-bottom: 50px;
 }
+.App-header {
+  background-color: #172337;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #09C8A4;
+  text-align: left;
+}
+
+.App-logo {
+  height: 10vmin;
+}
+
+.profile-img{
+  width:100px;
+  height:100px;
+}
+.login-box{
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+  margin: 0 auto;
+  padding-bottom:5px;
+}

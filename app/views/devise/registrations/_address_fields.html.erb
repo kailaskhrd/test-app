@@ -1,31 +1,46 @@
 <%= resource_frm.fields_for :address do |address_fields| %>
-  <div class="field">
-    <%= address_fields.label :line_1 %><br />
-    <%= address_fields.text_area :line_1 %>
-  </div>
 
-  <div class="field">
-    <%= address_fields.label :line_2 %><br />
-    <%= address_fields.text_area :line_2 %>
-  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= address_fields.label :line_1 %><br />
+        <%= address_fields.text_area :line_1 %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= address_fields.label :city %><br />
-    <%= address_fields.text_field :city %>
-  </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= address_fields.label :line_2 %><br />
+        <%= address_fields.text_area :line_2 %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= address_fields.label :state %><br />
-    <%= address_fields.text_field :state %>
-  </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= address_fields.label :city %><br />
+        <%= address_fields.text_field :city %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= address_fields.label :landmark %><br />
-    <%= address_fields.text_field :landmark %>
-  </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= address_fields.label :state %><br />
+        <%= address_fields.text_field :state %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= address_fields.label :pincode %><br />
-    <%= address_fields.text_field :pincode %>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= address_fields.label :landmark %><br />
+        <%= address_fields.text_field :landmark %>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= address_fields.label :pincode %><br />
+        <%= address_fields.text_field :pincode %>
+      </div>
+    </div>
   </div>
 <% end %>

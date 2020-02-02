@@ -2,7 +2,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-
+  layout :resolve_layout
   # GET /resource/sign_up
   def new
     #super
@@ -74,5 +74,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def end_user_role
       @end_user_role ||=Role.find_by(name: 'user')
+    end
+
+    def resolve_layout
+      case action_name
+      when "new", "create"
+        "login"
+      else
+        "application"
+      end
     end
 end

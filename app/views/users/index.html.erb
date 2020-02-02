@@ -12,7 +12,7 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <%= image_tag user.profile_photo.attached? ? user.profile_photo : "", style: "width:100px;height:100px"%>
+          <%= image_tag user.profile_photo.attached? ? user.profile_photo : "", class: 'profile-img'%>
         </td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
