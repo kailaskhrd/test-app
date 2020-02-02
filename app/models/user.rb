@@ -6,9 +6,11 @@ class User < ApplicationRecord
 
   has_many :assignments
   has_many :roles, through: :assignments
+  has_one :address, dependent: :destroy
+  has_one_attached :profile_photo
 
-  def role?(role)
-    roles.any? { |r| r.name.underscore.to_sym == role }
-  end
+  validates :name, :presence => true
+  validates :email, :presence => true, :uniqueness => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
+  accepts_nested_attributes_for :address
 end
