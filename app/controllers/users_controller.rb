@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
   after_action :verify_authorized
   def index
     authorize User
@@ -10,4 +11,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
   end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  private
+    def user_params
+      params.require(:user).permit(policy(@user || User).permitted_attributes)
+    end
 end

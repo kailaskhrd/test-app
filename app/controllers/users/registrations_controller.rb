@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
-      added_attrs = [:name, :email, :profile_photo, :address_attributes=> [:line_1, :line_2, :city, :state, :pincode, :landmark]]
+      added_attrs = [:name, :profile_photo, :address_attributes=> [:line_1, :line_2, :city, :state, :pincode, :landmark]]
       devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
     end
 
