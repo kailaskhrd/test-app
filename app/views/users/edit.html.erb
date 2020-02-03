@@ -1,5 +1,19 @@
-<h2>Edit User</h2>
+<h3>Edit User Details</h3>
+<%= form_with model: @user, data:{remote: false} do |f| %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%=message%>
+    <% end %>
+  </ul>
 
-<%= form_with model: @user do |f| %>
+  <% if @user.profile_photo.attached?%>
+    <%= image_tag @user.profile_photo , class: 'profile-img'%>
+  <% end%>
 
+  <p>Name: <%= @user.name if @user.name %></p>
+  <p>Email: <%= @user.email if @user.email %></p>
+  <%= render partial: "devise/registrations/address_fields", locals: {resource_frm: f} %>
+  <div class="actions">
+    <%= f.submit "Update", class: "btn btn-info btn-md"%>
+  </div>
 <%end%>

@@ -18,7 +18,7 @@
         <td><%= user.email %></td>
         <td><%= pretty_address(user.address).html_safe %></td>
         <td>
-
+          <%= link_to "Edit Address", edit_user_path(user), :class => 'navbar-link'  %>
         </td>
       </tr>
     <% end %>
