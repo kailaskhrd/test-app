@@ -1,0 +1,28 @@
+<h1>User List</h1>
+<div class="table-responsive">
+  <table class ="table">
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.profile_photo.attached? ? user.profile_photo : "", class: 'profile-img'%>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= pretty_address(user.address).html_safe %></td>
+        <td>
+
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%=will_paginate @users%>
+</div>
+

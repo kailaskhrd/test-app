@@ -2,7 +2,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-
+  layout :resolve_layout
   # GET /resource/sign_up
   def new
     #super
@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
-      added_attrs = [:name, :email, :profile_photo, :address_attributes=> [:line_1, :line_2, :city, :state, :pincode, :landmark]]
+      added_attrs = [:name, :profile_photo, :address_attributes=> [:line_1, :line_2, :city, :state, :pincode, :landmark]]
       devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
     end
 
@@ -74,5 +74,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def end_user_role
       @end_user_role ||=Role.find_by(name: 'user')
+    end
+
+    def resolve_layout
+      case action_name
+      when "new", "create"
+        "login"
+      else
+        "application"
+      end
     end
 end

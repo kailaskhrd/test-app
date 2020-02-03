@@ -12,15 +12,15 @@
   <body>
     <div id="wrapper">
       <%= render '/layouts/header'%>
-      <%= render '/layouts/sidebar'%>
 
-      <div id="page-wrapper">
-        <% flash.each do |type, msg| %>
-          <p class="alert alert-<%= type == 'error' ? 'danger' : 'success'%> alert-dismissable"><%= msg %></p>
-        <% end %>
-
+        <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
         <%= yield %>
-      </div>
+
     </div>
     <%= render '/layouts/footer'%>
   </body>
