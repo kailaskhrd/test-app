@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
 roles = Role.create([{name: 'admin'}, {name: 'user'} ])
 
 rights= Right.create([
@@ -27,7 +25,11 @@ end
 # add end user rights
 end_user = Role.find_by(name: 'user')
 end_user_rights = ['update self address', 'update self profile picture']
-Right.where(name: admin_rights).each do |right|
-  admin.roles_rights.create(right_id: right.id, status: RolesRight.statuses["granted"])
+Right.where(name: end_user_rights).each do |right|
+  end_user.roles_rights.create(right_id: right.id, status: RolesRight.statuses["granted"])
 end
+
+#create admin
+admin_user = User.create!(name: 'name',email: 'admin@test.com', password: 'admin123', password_confirmation: 'admin123' )
+admin_user.roles << Role.find_by(name: 'admin')
 

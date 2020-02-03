@@ -14,4 +14,16 @@ class User < ApplicationRecord
 
   scope :all_users,   -> { includes(:roles).references(:roles).where("roles.name = 'user'") }
   accepts_nested_attributes_for :address
+
+  def granted_rights_ids
+    RolesRight.where(role: self.roles).granted.pluck(:right_id)
+  end
+
+  def granted_rights
+    Right.where(id: granted_rights_ids)
+  end
+
+  def has_right?(right_name)
+    granted_rights.where(name: right_name).present?
+  end
 end
