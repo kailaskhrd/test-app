@@ -20,7 +20,9 @@ class User < ApplicationRecord
   end
 
   def granted_rights
-    Right.where(id: granted_rights_ids)
+    Rails.cache.fetch("user_granted_rights", :expires_in => 30.minutes) do
+      Right.where(id: granted_rights_ids)
+    end
   end
 
   def has_right?(right_name)
