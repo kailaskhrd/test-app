@@ -16,4 +16,7 @@ class UserPolicy < ApplicationPolicy
     [:address_attributes=> [:id, :line_1, :line_2, :city, :state, :pincode, :landmark]]
   end
 
+  def permitted_profile_update_attributes
+
+  end
 end
