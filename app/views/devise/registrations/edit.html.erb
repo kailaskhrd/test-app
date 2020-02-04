@@ -12,13 +12,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <p>Name: <%= resource.name %></p>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p>Email: <%= resource.email %></p>
   </div>
 
   <%# if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
